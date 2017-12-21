@@ -39,7 +39,7 @@ api_endpoint = API_URL.format(WALLET)
 influx_host = os.environ['INFLUXDB_HOST']
 influx_port = os.environ['INFLUXDB_PORT']
 influx_db = os.environ['INFLUXDB_DB']
-interval = 60
+interval = 50
 
 print("Connecting to influxdb at {0}".format(influx_host))
 client = InfluxDBClient(influx_host, influx_port, '', '', influx_db)
