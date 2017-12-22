@@ -14,8 +14,9 @@ def sendRequest():
 	return response.json()
 
 def sendToInflux(msg):
-	val = float("0.{0}".format(msg["amtDue"]))
+	# val = float("0.{0}".format(msg["amtDue"]))
 	# val = float("{0:.5f}".format(val))
+	val = float(msg["amtDue"]) / 1000000000000.0f
 	print(val)
 	json_body = [
 		{
