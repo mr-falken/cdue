@@ -51,9 +51,10 @@ while (1):
 		resp = sendRequest()
 		pp.pprint(resp)
 		sendToInflux(resp)
-		time.sleep(interval)
 	except Exception as e:
 	    print(e)
+
+	time.sleep(interval)
 	
 
 
