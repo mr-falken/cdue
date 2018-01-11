@@ -4,6 +4,8 @@ import pprint
 import time
 import requests
 from influxdb import InfluxDBClient
+import traceback
+import logging
 
 API_URL = 'https://supportxmr.com/api/miner/{0}/stats'
 WALLET = os.environ['W']
@@ -44,11 +46,14 @@ interval = 60
 print("Connecting to influxdb at {0}".format(influx_host))
 client = InfluxDBClient(influx_host, influx_port, '', '', influx_db)
 
-while (1): 
-	resp = sendRequest()
-	pp.pprint(resp)
-	sendToInflux(resp)
-	time.sleep(interval)
+while (1):
+	try:
+		resp = sendRequest()
+		pp.pprint(resp)
+		sendToInflux(resp)
+		time.sleep(interval)
+	except Exception as e:
+	    print(e)
 	
 
 
